@@ -1,0 +1,34 @@
+create database test;
+
+use test;
+
+create table user(
+id int primary key auto_increment,
+name varchar(20) not null,
+password varchar(60) not null,
+unique(name)
+);
+
+create table mibao(
+id int primary key,
+mb1 varchar(35) not null,
+mb1pwd varchar(35) not null,
+mb2 varchar(35) not null,
+mb2pwd varchar(35) not null,
+foreign key(id) references user(id)
+);
+
+create table send(
+id int not null,
+name varchar(20) not null,
+to_whom varchar(20) not null,
+message varchar(45),
+foreign key(id) references user(id)
+);
+
+create table receive(
+id int not null,
+whoSend varchar(20) not null,
+message varchar(45),
+foreign key(id) references user(id)
+);
